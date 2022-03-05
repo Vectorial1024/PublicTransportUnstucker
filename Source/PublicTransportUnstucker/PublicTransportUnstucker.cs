@@ -5,7 +5,7 @@ using System.Text;
 
 namespace PublicTransportUnstucker
 {
-    public class Class1
+    public class PublicTransportUnstucker
     {
     }
 }
