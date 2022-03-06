@@ -66,6 +66,7 @@
     <Compile Include="PatchController.cs" />
     <Compile Include="PublicTransportUnstucker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoguePassengerTable.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
