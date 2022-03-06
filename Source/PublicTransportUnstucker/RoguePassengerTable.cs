@@ -160,15 +160,11 @@ namespace PublicTransportUnstucker
             ushort currentVehicleID = vehicleID;
             VehicleManager vehicleManager = Singleton<VehicleManager>.instance;
             int iterationCount = 0;
-            while (true)
+            while (currentVehicleID != 0)
             {
                 FixRoguePassengersForThisTrailer(currentVehicleID, checkRunawayRange, out int faultyCountInThisTrailer);
                 totalInvalidCitizens += faultyCountInThisTrailer;
                 currentVehicleID = vehicleManager.m_vehicles.m_buffer[currentVehicleID].m_trailingVehicle;
-                if (currentVehicleID == 0)
-                {
-                    break;
-                }
                 if (++iterationCount > 16384)
                 {
                     // invalid list yada yada
