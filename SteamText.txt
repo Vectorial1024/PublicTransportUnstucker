@@ -5,7 +5,7 @@ Ensures public transport is running smoothly. Unbunching is not affected.
 [h1]Quick info[/h1]
 [list]
 [*]Requires Harmony
-[*]Fixes the Citizen Runaway Problem as found out in Express Bus Services (EBS not affected by this change) [b]but for all transport types[/b]
+[*]Fixes the Citizen Runaway Problem as found out in Express Bus Services (EBS not affected by this change) [b][u]but for all transport types (e.g. metro, train, ...)[/u][/b]
 [*]The Citizen Runaway Problem causes public transport to get stuck, and is a major cause of headache for all
 [*]有效處理「公共交通車輛長時間未能開出」的問題 （並非因為「班次穩定政策」而導致）
 [/list]
