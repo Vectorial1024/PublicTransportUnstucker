@@ -1,0 +1,18 @@
+Ensures public transport is running smoothly. Unbunching is not affected.
+
+(本mod並無中文名!)
+
+[h1]Quick info[/h1]
+[list]
+[*]Requires Harmony
+[*]Fixes the Citizen Runaway Problem as found out in Express Bus Services (EBS not affected by this change)
+[*]The Citizen Runaway Problem causes public transport to get stuck, and is a major cause of headache for all
+[*]有效處理「公共交通車輛長時間未能開出」的問題 （並非因為「班次穩定政策」而導致）
+[/list]
+
+More details about this Citizen Runaway Problem can be found on GitHub, but put simply, it causes public transport vehicles to be confused: it seemingly cannot confirm that all passengers are inside the vehicle, and so is stuck waiting for the rogue/runaway citizen.
+
+[h1]GitHub Repo[/h1]
+This mod is open-sourced, and the repo is available here: https://github.com/Vectorial1024/PublicTransportUnstucker
+
+And that's all!
