@@ -76,7 +76,7 @@ namespace PublicTransportUnstucker
                             Vector3 vehiclePosition = vehicleData.GetLastFramePosition();
                             float distance = Vector3.Distance(citizenPosition, vehiclePosition);
 
-                            if (distance > checkRogueRange || CheckIfCitizenIsRunningAway(instance2, distance))
+                            if (distance > adjustedRogueRange || CheckIfCitizenIsRunningAway(instance2, distance))
                             {
                                 // This citizen is determined to be faulty.
                                 // CitizenInstance is a struct and is given to us as a clone of the actual data.
