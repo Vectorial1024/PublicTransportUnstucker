@@ -173,7 +173,7 @@ namespace PublicTransportUnstucker
             if (totalInvalidCitizens > 0)
             {
                 StringBuilder builder = new StringBuilder();
-                builder.AppendLine("Some CIMs ran away after reserving some public transport. Correcting...");
+                builder.AppendLine("Rogue passengers detected. Correcting...");
                 builder.AppendLine("");
                 builder.AppendLine($"Reporting vehicle ID: {vehicleID}");
                 builder.AppendLine($"Number of corrected CIMs: {totalInvalidCitizens}");
