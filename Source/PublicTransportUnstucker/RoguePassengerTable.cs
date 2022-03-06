@@ -177,7 +177,7 @@ namespace PublicTransportUnstucker
                 builder.AppendLine("");
                 builder.AppendLine($"Reporting vehicle ID: {vehicleID}");
                 builder.AppendLine($"Number of corrected CIMs: {totalInvalidCitizens}");
-                Debug.Log(builder.ToString());
+                // Debug.Log(builder.ToString());
             }
         }
     }
