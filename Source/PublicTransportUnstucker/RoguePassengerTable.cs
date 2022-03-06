@@ -42,6 +42,53 @@ namespace PublicTransportUnstucker
             }
         }
 
+        private static void FixRoguePassengersForThisTrailer(ushort trailerVehicleID, int checkRogueRange, out int faultyCitizenCount)
+        {
+            faultyCitizenCount = 0;
+            CitizenManager instance = Singleton<CitizenManager>.instance;
+            // this is supposed to be read only
+            VehicleManager vehicleManager = Singleton<VehicleManager>.instance;
+            Vehicle vehicleData = vehicleManager.m_vehicles.m_buffer[trailerVehicleID];
+            uint num = vehicleData.m_citizenUnits;
+            int num2 = 0;
+            while (num != 0)
+            {
+                uint nextUnit = instance.m_units.m_buffer[num].m_nextUnit;
+                for (int i = 0; i < 5; i++)
+                {
+                    uint citizen = instance.m_units.m_buffer[num].GetCitizen(i);
+                    if (citizen != 0)
+                    {
+                        ushort instance2 = instance.m_citizens.m_buffer[citizen].m_instance;
+                        if (instance2 != 0 && (instance.m_instances.m_buffer[instance2].m_flags & CitizenInstance.Flags.EnteringVehicle) != 0)
+                        {
+                            // Debug.Log(citizen);
+
+                            CitizenInstance citizenInstanceReadonly = instance.m_instances.m_buffer[instance2];
+                            Vector3 citizenPosition = citizenInstanceReadonly.GetLastFramePosition();
+                            Vector3 vehiclePosition = vehicleData.GetLastFramePosition();
+                            float distance = Vector3.Distance(citizenPosition, vehiclePosition);
+
+                            if (distance > checkRogueRange || CheckIfCitizenIsRunningAway(instance2, distance))
+                            {
+                                // This citizen is determined to be faulty.
+                                // CitizenInstance is a struct and is given to us as a clone of the actual data.
+                                // To manipulate the actual CitizenInstance in the game, we need to do like this
+                                instance.m_instances.m_buffer[instance2].Unspawn(instance2);
+                                faultyCitizenCount++;
+                            }
+                        }
+                    }
+                }
+                num = nextUnit;
+                if (++num2 > 524288)
+                {
+                    // "invalid list detected yada yada"
+                    break;
+                }
+            }
+        }
+
         /// <summary>
         /// Fix citizens who bugged out and appear to run away from public transits,
         /// causing delays as public transit wait endlessly for those citizens' lengthy return.
@@ -99,55 +146,30 @@ namespace PublicTransportUnstucker
                     return;
             }
 
-            // Iterate through all citizens within the vehicle, copied from the game's code
-            int faultyCitizenCount = 0;
-            CitizenManager instance = Singleton<CitizenManager>.instance;
-            uint num = vehicleData.m_citizenUnits;
-            int num2 = 0;
-            while (num != 0)
+            // Iterate through all trailers!!!
+            int totalInvalidCitizens = 0;
+            ushort currentVehicleID = vehicleID;
+            VehicleManager vehicleManager = Singleton<VehicleManager>.instance;
+            int iterationCount = 0;
+            while (true)
             {
-                uint nextUnit = instance.m_units.m_buffer[num].m_nextUnit;
-                for (int i = 0; i < 5; i++)
+                FixRoguePassengersForThisTrailer(currentVehicleID, checkRunawayRange, out int faultyCountInThisTrailer);
+                totalInvalidCitizens += faultyCountInThisTrailer;
+                currentVehicleID = vehicleManager.m_vehicles.m_buffer[vehicleID].m_trailingVehicle;
+                if (++iterationCount > 16384)
                 {
-                    uint citizen = instance.m_units.m_buffer[num].GetCitizen(i);
-                    if (citizen != 0)
-                    {
-                        ushort instance2 = instance.m_citizens.m_buffer[citizen].m_instance;
-                        if (instance2 != 0 && (instance.m_instances.m_buffer[instance2].m_flags & CitizenInstance.Flags.EnteringVehicle) != 0)
-                        {
-                            // Debug.Log(citizen);
-
-                            CitizenInstance citizenInstanceReadonly = instance.m_instances.m_buffer[instance2];
-                            Vector3 citizenPosition = citizenInstanceReadonly.GetLastFramePosition();
-                            Vector3 vehiclePosition = vehicleData.GetLastFramePosition();
-                            float distance = Vector3.Distance(citizenPosition, vehiclePosition);
-
-                            if (distance > checkRunawayRange || CheckIfCitizenIsRunningAway(instance2, distance))
-                            {
-                                // This citizen is determined to be faulty.
-                                // CitizenInstance is a struct and is given to us as a clone of the actual data.
-                                // To manipulate the actual CitizenInstance in the game, we need to do like this
-                                instance.m_instances.m_buffer[instance2].Unspawn(instance2);
-                                faultyCitizenCount++;
-                            }
-                        }
-                    }
-                }
-                num = nextUnit;
-                if (++num2 > 524288)
-                {
-                    // "invalid list detected yada yada"
+                    // invalid list yada yada
                     break;
                 }
             }
 
-            if (faultyCitizenCount > 0)
+            if (totalInvalidCitizens > 0)
             {
                 StringBuilder builder = new StringBuilder();
                 builder.AppendLine("Some CIMs ran away after reserving some public transport. Correcting...");
                 builder.AppendLine("");
                 builder.AppendLine($"Reporting vehicle ID: {vehicleID}");
-                builder.AppendLine($"Number of corrected CIMs: {faultyCitizenCount}");
+                builder.AppendLine($"Number of corrected CIMs: {totalInvalidCitizens}");
                 Debug.Log(builder.ToString());
             }
         }
