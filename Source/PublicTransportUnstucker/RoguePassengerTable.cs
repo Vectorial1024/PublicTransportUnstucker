@@ -165,6 +165,10 @@ namespace PublicTransportUnstucker
                 FixRoguePassengersForThisTrailer(currentVehicleID, checkRunawayRange, out int faultyCountInThisTrailer);
                 totalInvalidCitizens += faultyCountInThisTrailer;
                 currentVehicleID = vehicleManager.m_vehicles.m_buffer[currentVehicleID].m_trailingVehicle;
+                if (currentVehicleID == 0)
+                {
+                    break;
+                }
                 if (++iterationCount > 16384)
                 {
                     // invalid list yada yada
