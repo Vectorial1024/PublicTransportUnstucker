@@ -6,7 +6,7 @@ using System.Text;
 
 namespace PublicTransportUnstucker
 {
-    [HarmonyPatch(typeof(PassengerFerryAI))]
+    [HarmonyPatch(typeof(PassengerTrainAI))]
     [HarmonyPatch("CanLeave", MethodType.Normal)]
     public class Patch_PassengerTrainAI_AntiRogue
     {
