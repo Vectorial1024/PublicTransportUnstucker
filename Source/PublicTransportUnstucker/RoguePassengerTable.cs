@@ -37,7 +37,7 @@ namespace PublicTransportUnstucker
             }
             else
             {
-                citizenDistanceTable.Add(citizenInstanceID, previousDistance);
+                citizenDistanceTable.Add(citizenInstanceID, distance);
                 return false;
             }
         }
