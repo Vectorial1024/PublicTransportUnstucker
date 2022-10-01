@@ -21,6 +21,11 @@ These transportation types are currently covered by this mod:
 - Trolleybuses
 - Metros
 - Trains
+- Planes
+- Blimps
+- Helicopers
+- Ships
+- Ferries
 
 Other types are not yet covered, but perhaps they are also affected by this bug. I am not sure.
 
