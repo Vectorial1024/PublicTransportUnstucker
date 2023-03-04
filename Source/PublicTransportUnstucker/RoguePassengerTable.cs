@@ -134,21 +134,21 @@ namespace PublicTransportUnstucker
                 case ItemClass.SubService.PublicTransportBus:
                 case ItemClass.SubService.PublicTransportTrolleybus:
                 case ItemClass.SubService.PublicTransportTours:
-                    checkRunawayRange = 30;
+                    checkRunawayRange = 20;
                     break;
                 case ItemClass.SubService.PublicTransportShip:
                 case ItemClass.SubService.PublicTransportPlane:
                     checkRunawayRange = 60;
                     break;
                 case ItemClass.SubService.PublicTransportMonorail:
-                    checkRunawayRange = 90;
+                    checkRunawayRange = 60;
                     break;
                 case ItemClass.SubService.PublicTransportMetro:
                 case ItemClass.SubService.PublicTransportConcourse:
-                    checkRunawayRange = 150;
+                    checkRunawayRange = 160;
                     break;
                 case ItemClass.SubService.PublicTransportTrain:
-                    checkRunawayRange = 210;
+                    checkRunawayRange = 160;
                     break;
                 default:
                     // unsupported
