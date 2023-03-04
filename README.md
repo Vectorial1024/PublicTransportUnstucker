@@ -37,3 +37,7 @@ The main idea of CRP is very simple. It is known that buses etc cannot depart be
 I do not understand why this happens, nor do I have the time to find out, but I do know how to "fix" this problem: whenever this problem appears, disappear the problem. Simple.
 
 When supported public transport vehicles are checking whether everyone is on board, I add an extra check to detect rogue passengers, and if there are such passengers, I force-despawn them. This sends them back to the "background" and the "all aboard" check passes.
+
+Special Note: if for some reason the passenger in question is too far away from the transport vehicle, then the passenger is also considered as a rogue passenger. The rogue distance is different for each type of public transport covered, but the range is set so that they do not block vanilla behavior using vanilla numbers.
+
+For example, currently trains have a rogue range of 160 units (16 tiles), which is the max length of a vanilla train platform. If the passenger is somehow beyond 160-units far, then it is marked as rogue and forced to despawn into the vehicle.
