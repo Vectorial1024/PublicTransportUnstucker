@@ -34,6 +34,6 @@ It actually started when I was developing my other mod Express Bus Services. Whe
 
 The main idea of CRP is very simple. It is known that buses etc cannot depart before everyone has entered the vehicle and despawned, this makes sense. However, randomly, there will be passengers who declare that they have entered the vehicle but actually did not (fun fact: they will begin to slide through the terrain to their destination so they usually cannot be seen). This results in the vehicles waiting basically forever for those rogue passengers to return, making them stuck.
 
-I do not understand why this happens, dor do I have the time to find out, but I do know how to "fix" this problem: whenever this problem appears, disappear the problem. Simple.
+I do not understand why this happens, nor do I have the time to find out, but I do know how to "fix" this problem: whenever this problem appears, disappear the problem. Simple.
 
 When supported public transport vehicles are checking whether everyone is on board, I add an extra check to detect rogue passengers, and if there are such passengers, I force-despawn them. This sends them back to the "background" and the "all aboard" check passes.
