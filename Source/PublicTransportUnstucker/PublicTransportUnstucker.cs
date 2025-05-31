@@ -7,7 +7,7 @@ namespace PublicTransportUnstucker
     [UsedImplicitly]
     public class PublicTransportUnstucker : LoadingExtensionBase, IUserMod
     {
-        public virtual string Name => "Public Transport Unstucker";
+        public virtual string Name => "Public Transport Unstucker [OBSOLETE]";
 
         public virtual string Description => "OBSOLETE AS OF 1.17.1-f2. Fixes stuck public transport by reacting to known causes of getting stuck.";
 
