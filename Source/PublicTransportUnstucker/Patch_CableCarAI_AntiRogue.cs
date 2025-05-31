@@ -4,7 +4,7 @@ using JetBrains.Annotations;
 namespace PublicTransportUnstucker
 {
     [HarmonyPatch(typeof(CableCarAI))]
-    [HarmonyPatch("CanLeave", MethodType.Normal)]
+    [HarmonyPatch(nameof(CableCarAI.CanLeave), MethodType.Normal)]
     [UsedImplicitly]
     public class Patch_CableCarAI_AntiRogue
     {

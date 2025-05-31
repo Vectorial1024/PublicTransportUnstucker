@@ -4,7 +4,7 @@ using JetBrains.Annotations;
 namespace PublicTransportUnstucker
 {
     [HarmonyPatch(typeof(PassengerHelicopterAI))]
-    [HarmonyPatch("CanLeave", MethodType.Normal)]
+    [HarmonyPatch(nameof(PassengerHelicopterAI.CanLeave), MethodType.Normal)]
     [UsedImplicitly]
     public class Patch_PassengerHelicopterAI_AntiRogue
     {
