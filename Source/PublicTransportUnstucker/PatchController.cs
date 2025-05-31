@@ -7,15 +7,9 @@ using System.Text;
 
 namespace PublicTransportUnstucker
 {
-    internal class PatchController
+    internal static class PatchController
     {
-        public static string HarmonyModID
-        {
-            get
-            {
-                return "com.vectorial1024.cities.ptu";
-            }
-        }
+        public static string HarmonyModID => "com.vectorial1024.cities.ptu";
 
         /*
          * The "singleton" design is pretty straight-forward.

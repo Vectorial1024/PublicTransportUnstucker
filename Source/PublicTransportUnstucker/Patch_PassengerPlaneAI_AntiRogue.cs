@@ -1,13 +1,16 @@
 ﻿using HarmonyLib;
+using JetBrains.Annotations;
 
 namespace PublicTransportUnstucker
 {
     [HarmonyPatch(typeof(PassengerPlaneAI))]
     [HarmonyPatch("CanLeave", MethodType.Normal)]
+    [UsedImplicitly]
     public class Patch_PassengerPlaneAI_AntiRogue
     {
         [HarmonyPrefix]
-        public static void PreFix(ushort vehicleID, ref Vehicle vehicleData)
+        [UsedImplicitly]
+        public static void InterveneRogueCitizens(ushort vehicleID, ref Vehicle vehicleData)
         {
             if (vehicleData.m_waitCounter > 0 && vehicleData.m_waitCounter % 20 == 0)
             {

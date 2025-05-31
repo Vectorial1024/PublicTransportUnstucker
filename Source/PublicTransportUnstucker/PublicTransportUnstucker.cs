@@ -1,29 +1,15 @@
 ﻿using CitiesHarmony.API;
 using ICities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using JetBrains.Annotations;
 
 namespace PublicTransportUnstucker
 {
+    [UsedImplicitly]
     public class PublicTransportUnstucker : LoadingExtensionBase, IUserMod
     {
-        public virtual string Name
-        {
-            get
-            {
-                return "Public Transport Unstucker";
-            }
-        }
+        public virtual string Name => "Public Transport Unstucker";
 
-        public virtual string Description
-        {
-            get
-            {
-                return "Fixes stuck public transport by reacting to known causes of getting stuck.";
-            }
-        }
+        public virtual string Description => "Fixes stuck public transport by reacting to known causes of getting stuck.";
 
         /// <summary>
         /// Executed whenever a level completes its loading process.

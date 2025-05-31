@@ -9,8 +9,9 @@ namespace PublicTransportUnstucker
 {
     public class RoguePassengerTable
     {
-        // essentially the same as the CitizenRunawayTable from ExpressBusServices
-        // but renamed toa void confusion and name clash
+        // originally the CitizenRunawayTable from ExpressBusServices
+        // now extracted to be its own mod
+        // also, ExpressBusServices will not be handling this bug anymore, to reduce management confusion.
 
         // remembers the last location of the citizen
         private static Dictionary<ushort, float> citizenDistanceTable;
@@ -110,7 +111,7 @@ namespace PublicTransportUnstucker
              * We correct CIMs with two criteria:
              * 1. CIMs who are walking further and further away from the vehicle will be unspawned
              * 2. CIMs who are too far away (be they approaching the vehicle or not) will be unspawned
-             * 
+             *
              * The "runaway range" for case 2 is dependent on the type of transit involved.
              * Metro runaway range will be higher than bus runaway range because metro station platforms
              * are generally larger than bus station platforms.
