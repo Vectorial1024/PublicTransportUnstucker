@@ -5,8 +5,12 @@ Alternatively:
 
 Buses are stuck? metros are stuck? Public transport is stuck? Buses and metros arrive at their stations but never depart? Unbunching is disabled but they are still stuck? Look no further! Public Transport Unstucker (PTU) is here to help.
 
+**Update (31 May 2025): as of Patch 1.17.1-f2 (released 12 June 2023), the bug that motivated the creation of this mod is fixed by Colossal Order themselves. As such, this mod is no longer needed.**
+
+**With this, the repo shall be archived.**
+
 # Mod Status
-- No known incomaptibility problems (yet; TODO does EBS work with this?)
+- No known incompatibility problems
 
 Because this mod is very small and simple, I am open-sourcing this to everyone out there.
 
@@ -23,7 +27,7 @@ These transportation types are currently covered by this mod:
 - Trains
 - Planes
 - Blimps
-- Helicopers
+- Helicopters
 - Ships
 - Ferries
 

@@ -1,3 +1,9 @@
+[h1]MOD IS OBSOLETE![/h1]
+
+[b]Update (31 May 2025): as of Patch 1.17.1-f2 (released 12 June 2023), the bug that motivated the creation of this mod is fixed by Colossal Order themselves. As such, this mod is no longer needed.[/b] (credits to Steam user ProfessorHen for reminding me about this!)
+
+------
+
 Ensures public transport is running smoothly. Unbunching is not affected.
 
 (本mod並無中文名!)

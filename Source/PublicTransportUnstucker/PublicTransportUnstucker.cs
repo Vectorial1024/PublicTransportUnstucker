@@ -9,7 +9,7 @@ namespace PublicTransportUnstucker
     {
         public virtual string Name => "Public Transport Unstucker";
 
-        public virtual string Description => "Fixes stuck public transport by reacting to known causes of getting stuck.";
+        public virtual string Description => "OBSOLETE AS OF 1.17.1-f2. Fixes stuck public transport by reacting to known causes of getting stuck.";
 
         /// <summary>
         /// Executed whenever a level completes its loading process.
