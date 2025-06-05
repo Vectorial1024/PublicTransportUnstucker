@@ -1,9 +1,3 @@
-[h1]MOD IS OBSOLETE![/h1]
-
-[b]Update (31 May 2025): as of Patch 1.17.1-f2 (released 12 June 2023), the bug that motivated the creation of this mod is fixed by Colossal Order themselves. As such, this mod is no longer needed.[/b] (credits to Steam user ProfessorHen for reminding me about this!)
-
-------
-
 Ensures public transport is running smoothly. Unbunching is not affected.
 
 (本mod並無中文名!)
@@ -17,6 +11,8 @@ Ensures public transport is running smoothly. Unbunching is not affected.
 [/list]
 
 More details about this Citizen Runaway Problem can be found on GitHub, but put simply, it causes public transport vehicles to be confused: it seemingly cannot confirm that all passengers are inside the vehicle, and so is stuck waiting for the rogue/runaway citizen.
+
+One beneficial side effect of this mod is that overlong train sets are benefited: passengers belonging to the overlong portion are despawned, ensuring timely departure.
 
 [h1]GitHub Repo[/h1]
 This mod is open-sourced, and the repo is available here: https://github.com/Vectorial1024/PublicTransportUnstucker
