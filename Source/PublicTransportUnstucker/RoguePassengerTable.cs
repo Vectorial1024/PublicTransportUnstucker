@@ -28,17 +28,14 @@ namespace PublicTransportUnstucker
 
         public static bool CheckIfCitizenIsRunningAway(ushort citizenInstanceID, float distance)
         {
-            float previousDistance;
-            if (citizenDistanceTable.TryGetValue(citizenInstanceID, out previousDistance))
+            // tick-tock state: once to remember, twice to pop+compare
+            if (citizenDistanceTable.TryGetValue(citizenInstanceID, out float previousDistance))
             {
                 ForgetCitizen(citizenInstanceID);
                 return distance > previousDistance;
             }
-            else
-            {
-                citizenDistanceTable.Add(citizenInstanceID, distance);
-                return false;
-            }
+            citizenDistanceTable.Add(citizenInstanceID, distance);
+            return false;
         }
 
         private static void FixRoguePassengersForThisTrailer(ushort trailerVehicleID, int checkRogueRange, out int faultyCitizenCount)
