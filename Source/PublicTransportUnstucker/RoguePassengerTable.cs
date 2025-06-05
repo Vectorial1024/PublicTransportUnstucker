@@ -48,14 +48,6 @@ namespace PublicTransportUnstucker
             uint num = vehicleData.m_citizenUnits;
             int num2 = 0;
             int adjustedRogueRange = checkRogueRange;
-            /*
-            if (vehicleData.m_waitCounter > 12)
-            {
-                // new logic: exponentially decrease the check range for each 12 "units of time" passed
-                double modifier = 12.0 / vehicleData.m_waitCounter;
-                adjustedRogueRange *= (int) modifier;
-            }
-            */
             while (num != 0)
             {
                 uint nextUnit = instance.m_units.m_buffer[num].m_nextUnit;
