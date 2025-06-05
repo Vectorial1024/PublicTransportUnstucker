@@ -128,6 +128,7 @@ namespace PublicTransportUnstucker
             switch (itemClass.m_subService)
             {
                 case ItemClass.SubService.PublicTransportCableCar:
+                case ItemClass.SubService.PublicTransportTaxi:
                     checkRunawayRange = 10;
                     break;
                 case ItemClass.SubService.PublicTransportBus:

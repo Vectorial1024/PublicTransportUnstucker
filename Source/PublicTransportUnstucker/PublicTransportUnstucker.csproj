@@ -66,6 +66,7 @@
     <Compile Include="Patch_PassengerFerryAI_AntiRogue.cs" />
     <Compile Include="Patch_PassengerPlaneAI_AntiRogue.cs" />
     <Compile Include="Patch_PassengerShipAI_AntiRogue.cs" />
+    <Compile Include="Patch_TaxiAI_AntiRogue.cs" />
     <Compile Include="Patch_TramAI_AntiRogue.cs" />
     <Compile Include="Patch_BusAI_AntiRogue.cs" />
     <Compile Include="Patch_PassengerTrainAI_AntiRogue.cs" />
