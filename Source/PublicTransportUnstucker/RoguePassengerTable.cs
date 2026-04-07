@@ -24,6 +24,13 @@ namespace PublicTransportUnstucker
 
         private static int _citizenUnitIterLimit = DefaultCitizenUnitLimit;
 
+        private static bool _moreVehiclesLoaded;
+
+        private const int DefaultVehiclesLimit = 16384;
+        private const int MoreVehiclesLimit = 65536;
+
+        private static int _vehicleIterLimit = DefaultVehiclesLimit;
+
         public static void EnsureTableExists()
         {
             if (citizenDistanceTable == null)
@@ -55,6 +62,15 @@ namespace PublicTransportUnstucker
             var sentinelType = theAssembly.GetType("MoreCitizenUnits.Mod");
             _moreCitizenUnitsLoaded = sentinelType != null;
             _citizenUnitIterLimit = _moreCitizenUnitsLoaded ? MoreCitizenUnitLimit : DefaultCitizenUnitLimit;
+        }
+
+        public static void CheckMoreVehicles()
+        {
+            // fine, we will do it ourselves.
+            var theAssembly = Assembly.Load("MoreVehicles");
+            var sentinelType = theAssembly.GetType("MoreVehicles.MoreVehiclesMod");
+            _moreVehiclesLoaded = sentinelType != null;
+            _vehicleIterLimit = _moreVehiclesLoaded ? MoreVehiclesLimit : DefaultVehiclesLimit;
         }
 
         private static void FixRoguePassengersForThisTrailer(ushort trailerVehicleID, int checkRogueRange, out int faultyCitizenCount)
@@ -173,7 +189,7 @@ namespace PublicTransportUnstucker
                 FixRoguePassengersForThisTrailer(currentVehicleID, checkRunawayRange, out int faultyCountInThisTrailer);
                 totalInvalidCitizens += faultyCountInThisTrailer;
                 currentVehicleID = vehicleManager.m_vehicles.m_buffer[currentVehicleID].m_trailingVehicle;
-                if (++iterationCount > 16384)
+                if (++iterationCount > _vehicleIterLimit)
                 {
                     // invalid list yada yada
                     break;
