@@ -2,6 +2,8 @@ Ensures public transport is running smoothly. Unbunching is not affected.
 
 (本mod並無中文名!)
 
+[img]https://i.imgur.com/1EqyarL.png[/img]
+
 [h1]Quick info[/h1]
 [list]
 [*]Requires Harmony
