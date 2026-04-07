@@ -27,6 +27,7 @@ namespace PublicTransportUnstucker
         {
             GetHarmonyInstance().PatchAll(Assembly.GetExecutingAssembly());
             RoguePassengerTable.EnsureTableExists();
+            RoguePassengerTable.CheckMoreCitizenUnits();
         }
 
         public static void Deactivate()

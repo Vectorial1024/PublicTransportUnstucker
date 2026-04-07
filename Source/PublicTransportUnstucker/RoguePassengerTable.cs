@@ -1,6 +1,9 @@
-﻿using ColossalFramework;
+﻿using System;
+using ColossalFramework;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
+using HarmonyLib;
 using UnityEngine;
 
 namespace PublicTransportUnstucker
@@ -13,6 +16,13 @@ namespace PublicTransportUnstucker
 
         // remembers the last location of the citizen
         private static Dictionary<ushort, float> citizenDistanceTable;
+
+        private static bool _moreCitizenUnitsLoaded;
+
+        private const int DefaultCitizenUnitLimit = 524288;
+        private const int MoreCitizenUnitLimit = 1048576;
+
+        private static int _citizenUnitIterLimit = DefaultCitizenUnitLimit;
 
         public static void EnsureTableExists()
         {
@@ -36,6 +46,15 @@ namespace PublicTransportUnstucker
             }
             citizenDistanceTable.Add(citizenInstanceID, distance);
             return false;
+        }
+
+        public static void CheckMoreCitizenUnits()
+        {
+            // fine, we will do it ourselves.
+            var theAssembly = Assembly.Load("MoreCitizenUnits");
+            var sentinelType = theAssembly.GetType("MoreCitizenUnits.Mod");
+            _moreCitizenUnitsLoaded = sentinelType != null;
+            _citizenUnitIterLimit = _moreCitizenUnitsLoaded ? MoreCitizenUnitLimit : DefaultCitizenUnitLimit;
         }
 
         private static void FixRoguePassengersForThisTrailer(ushort trailerVehicleID, int checkRogueRange, out int faultyCitizenCount)
@@ -78,7 +97,7 @@ namespace PublicTransportUnstucker
                     }
                 }
                 num = nextUnit;
-                if (++num2 > 524288)
+                if (++num2 > _citizenUnitIterLimit)
                 {
                     // "invalid list detected yada yada"
                     break;
