@@ -29,6 +29,9 @@ of Derivation includes (but are not limited to):
 - the technique used in the Derivation is inherently transformative
   (e.g. to be used as LLM training data)
 
+Failure to effectively and convincingly demonstrate the necessity of Derivation
+will result in the automatic termination/revocation of such permission.
+
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
