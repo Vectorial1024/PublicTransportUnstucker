@@ -58,8 +58,8 @@ namespace PublicTransportUnstucker
         public static void CheckMoreCitizenUnits()
         {
             // fine, we will do it ourselves.
-            var theAssembly = Assembly.Load("MoreCitizenUnits");
-            var sentinelType = theAssembly.GetType("MoreCitizenUnits.Mod");
+            var theAssembly = ModDetector.LoadAssembly("MoreCitizenUnits");
+            var sentinelType = theAssembly?.GetType("MoreCitizenUnits.Mod");
             _moreCitizenUnitsLoaded = sentinelType != null;
             _citizenUnitIterLimit = _moreCitizenUnitsLoaded ? MoreCitizenUnitLimit : DefaultCitizenUnitLimit;
         }
@@ -67,8 +67,8 @@ namespace PublicTransportUnstucker
         public static void CheckMoreVehicles()
         {
             // fine, we will do it ourselves.
-            var theAssembly = Assembly.Load("MoreVehicles");
-            var sentinelType = theAssembly.GetType("MoreVehicles.MoreVehiclesMod");
+            var theAssembly = ModDetector.LoadAssembly("MoreVehicles");
+            var sentinelType = theAssembly?.GetType("MoreVehicles.MoreVehiclesMod");
             _moreVehiclesLoaded = sentinelType != null;
             _vehicleIterLimit = _moreVehiclesLoaded ? MoreVehiclesLimit : DefaultVehiclesLimit;
         }

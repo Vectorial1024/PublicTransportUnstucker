@@ -63,6 +63,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ModDetector.cs" />
     <Compile Include="Patch_CableCarAI_AntiRogue.cs" />
     <Compile Include="Patch_PassengerHelicopterAI_AntiRogue.cs" />
     <Compile Include="Patch_PassengerBlimpAI_AntiRogue.cs" />
